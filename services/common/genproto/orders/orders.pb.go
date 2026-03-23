@@ -7,12 +7,11 @@
 package orders
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -238,27 +237,27 @@ func (x *GetOrdersRequest) GetCustomerID() int32 {
 	return 0
 }
 
-type Get struct {
+type GetOrderResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Orders        []*Order               `protobuf:"bytes,1,rep,name=orders,proto3" json:"orders,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Get) Reset() {
-	*x = Get{}
+func (x *GetOrderResponse) Reset() {
+	*x = GetOrderResponse{}
 	mi := &file_orders_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Get) String() string {
+func (x *GetOrderResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Get) ProtoMessage() {}
+func (*GetOrderResponse) ProtoMessage() {}
 
-func (x *Get) ProtoReflect() protoreflect.Message {
+func (x *GetOrderResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_orders_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -270,12 +269,12 @@ func (x *Get) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Get.ProtoReflect.Descriptor instead.
-func (*Get) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetOrderResponse.ProtoReflect.Descriptor instead.
+func (*GetOrderResponse) Descriptor() ([]byte, []int) {
 	return file_orders_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *Get) GetOrders() []*Order {
+func (x *GetOrderResponse) GetOrders() []*Order {
 	if x != nil {
 		return x.Orders
 	}
@@ -305,11 +304,12 @@ const file_orders_proto_rawDesc = "" +
 	"\x10GetOrdersRequest\x12\x1e\n" +
 	"\n" +
 	"customerID\x18\x01 \x01(\x05R\n" +
-	"customerID\".\n" +
-	"\x03Get\x12'\n" +
-	"\x06orders\x18\x01 \x03(\v2\x0f.protobuf.OrderR\x06orders2\\\n" +
+	"customerID\";\n" +
+	"\x10GetOrderResponse\x12'\n" +
+	"\x06orders\x18\x01 \x03(\v2\x0f.protobuf.OrderR\x06orders2\xa3\x01\n" +
 	"\fOrderService\x12L\n" +
-	"\vCreateOrder\x12\x1c.protobuf.CreateOrderRequest\x1a\x1d.protobuf.CreateOrderResponse\"\x00B'Z%Order/services/common/genproto/ordersb\x06proto3"
+	"\vCreateOrder\x12\x1c.protobuf.CreateOrderRequest\x1a\x1d.protobuf.CreateOrderResponse\"\x00\x12E\n" +
+	"\tGetOrders\x12\x1a.protobuf.GetOrdersRequest\x1a\x1a.protobuf.GetOrderResponse\"\x00B'Z%Order/services/common/genproto/ordersb\x06proto3"
 
 var (
 	file_orders_proto_rawDescOnce sync.Once
@@ -329,14 +329,16 @@ var file_orders_proto_goTypes = []any{
 	(*CreateOrderRequest)(nil),  // 1: protobuf.CreateOrderRequest
 	(*CreateOrderResponse)(nil), // 2: protobuf.CreateOrderResponse
 	(*GetOrdersRequest)(nil),    // 3: protobuf.GetOrdersRequest
-	(*Get)(nil),                 // 4: protobuf.Get
+	(*GetOrderResponse)(nil),    // 4: protobuf.GetOrderResponse
 }
 var file_orders_proto_depIdxs = []int32{
-	0, // 0: protobuf.Get.orders:type_name -> protobuf.Order
+	0, // 0: protobuf.GetOrderResponse.orders:type_name -> protobuf.Order
 	1, // 1: protobuf.OrderService.CreateOrder:input_type -> protobuf.CreateOrderRequest
-	2, // 2: protobuf.OrderService.CreateOrder:output_type -> protobuf.CreateOrderResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
+	3, // 2: protobuf.OrderService.GetOrders:input_type -> protobuf.GetOrdersRequest
+	2, // 3: protobuf.OrderService.CreateOrder:output_type -> protobuf.CreateOrderResponse
+	4, // 4: protobuf.OrderService.GetOrders:output_type -> protobuf.GetOrderResponse
+	3, // [3:5] is the sub-list for method output_type
+	1, // [1:3] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name

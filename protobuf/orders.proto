@@ -6,6 +6,7 @@ option go_package = "Order/services/common/genproto/orders";
 
 service OrderService {
   rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse){}
+  rpc GetOrders(GetOrdersRequest) returns (GetOrderResponse) {}
 }
 
 message Order {
@@ -28,6 +29,7 @@ message GetOrdersRequest {
   int32 customerID = 1;
 }
 
-message Get {
+message GetOrderResponse {
   repeated Order orders = 1;
 }
+
